@@ -71,7 +71,7 @@ const Work = () => {
         opacity: 1,
         transition: { delay: 2.4, duration: 0.4, ease: "easeIn" },
       }}
-      className="min-h-[80vh] flex flex-col justify-center py-12 lg:px-0"
+      className="min-h-[80vh] flex flex-col justify-center py-12 lg:px-0 lg:py-0"
     >
       <div className="container mx-auto">
         <div className="flex flex-col lg:flex-row lg:gap-[30px]">
@@ -133,7 +133,7 @@ const Work = () => {
             <Swiper
               spaceBetween={30}
               slidesPerView={1}
-              className="lg:h-[520px] mb-12"
+              className="lg:h-[530px] mb-12 lg:mb-0"
               onSlideChange={handleSlideChange}
             >
               {projects.map((project, index) => (
@@ -155,7 +155,7 @@ const Work = () => {
               ))}
               {/* slider buttons */}
               <WorkSliderBtns
-                conatinerStyles="flex gap-2 absolute right-0 bottom-[calc(50%_-_22px)] lg:bottom-0 w-full z-20 justify-between lg:w-max lg:justify-none"
+                conatinerStyles="flex gap-2 absolute right-0 bottom-[calc(50%_-_22px)] lg:bottom-2 w-full z-20 justify-between lg:w-max lg:justify-start"
                 btnStyles="bg-accent hover:bg-accent-hover text-primary text-[22px] w-[44px] h-[44px] flex justify-center items-center transition-all rounded-md"
               />
             </Swiper>

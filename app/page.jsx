@@ -39,7 +39,7 @@ const Home = () => {
             </div>
           </div>
           {/* photo */}
-          <div className="order-1 lg:order-none mb-8 lg:mb-0">
+          <div className="order-1 lg:order-none -mt-14 lg:mb-0">
             <Photo />
           </div>
         </div>

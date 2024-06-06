@@ -11,6 +11,7 @@ const Photo = () => {
           opacity: 1,
           transition: { delay: 2, duration: 0.4, ease: "easeIn" },
         }}
+        className="mt-8 lg:mt-0"
       >
         {/* image */}
         <motion.div
