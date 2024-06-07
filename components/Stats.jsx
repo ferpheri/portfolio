@@ -37,10 +37,10 @@ const Stats = () => {
                 end={stat.num}
                 delay={2}
                 duration={5}
-                className="text-4xl lg:text-6xl font-extrabold text-accent"
+                className="text-4xl lg:text-6xl font-extrabold text-indigo-900 dark:text-accent"
               />
               <p
-                className={`${stat.text.length < 15 ? "max-w-[100px]" : "max-w-[150px]"} leading-snug text-white/80`}
+                className={`${stat.text.length < 15 ? "max-w-[100px]" : "max-w-[150px]"} leading-snug text-black dark:text-white/80`}
               >
                 {stat.text}
               </p>

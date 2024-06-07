@@ -213,7 +213,7 @@ const Resume = () => {
             <TabsContent value="experience" className="w-full">
               <div className="flex flex-col gap-[30px] text-center lg:text-left">
                 <h3 className="text-4xl font-bold">{experience.title}</h3>
-                <p className="max-w-[600px] text-white/60 mx-auto lg:mx-0">
+                <p className="max-w-[600px] text-black/80 dark:text-white/60 mx-auto lg:mx-0">
                   {experience.description}
                 </p>
                 <ScrollArea className="h-[300px]">
@@ -221,15 +221,19 @@ const Resume = () => {
                     {experience.items.map((item, index) => (
                       <li
                         key={index}
-                        className="bg-[#232329] h-[184px] py-6 px-10 rounded-xl flex flex-col justify-center items-center md:items-start gap-1"
+                        className="bg-indigo-400 dark:bg-[#232329] h-[184px] py-6 px-10 rounded-xl flex flex-col justify-center items-center md:items-start gap-1"
                       >
-                        <span className="text-accent">{item.duration}</span>
+                        <span className="text-indigo-950 dark:text-accent">
+                          {item.duration}
+                        </span>
                         <h3 className="text-xl max-w-[260px] min-h-[60px] text-center md:text-left">
                           {item.position}
                         </h3>
                         <div className="flex items-center gap-3">
-                          <span className="w-[6px] h-[6px] bg-accent rounded-full"></span>
-                          <p className="text-white/60">{item.company}</p>
+                          <span className="w-[6px] h-[6px] bg-indigo-700 dark:bg-accent rounded-full"></span>
+                          <p className="text-black/80 dark:text-white/60">
+                            {item.company}
+                          </p>
                         </div>
                       </li>
                     ))}
@@ -242,7 +246,7 @@ const Resume = () => {
             <TabsContent value="education" className="w-full">
               <div className="flex flex-col gap-[30px] text-center lg:text-left">
                 <h3 className="text-4xl font-bold">{education.title}</h3>
-                <p className="max-w-[600px] text-white/60 mx-auto lg:mx-0">
+                <p className="max-w-[600px] text-black/80 dark:text-white/60 mx-auto lg:mx-0">
                   {education.description}
                 </p>
                 <ScrollArea className="h-[300px]">
@@ -250,15 +254,19 @@ const Resume = () => {
                     {education.items.map((item, index) => (
                       <li
                         key={index}
-                        className="bg-[#232329] h-[184px] py-6 px-10 rounded-xl flex flex-col justify-center items-center md:items-start gap-1"
+                        className="bg-indigo-400 dark:bg-[#232329] h-[184px] py-6 px-10 rounded-xl flex flex-col justify-center items-center md:items-start gap-1"
                       >
-                        <span className="text-accent">{item.duration}</span>
+                        <span className="text-indigo-950 dark:text-accent">
+                          {item.duration}
+                        </span>
                         <h3 className="text-xl max-w-[260px] min-h-[60px] text-center md:text-left">
                           {item.degree}
                         </h3>
                         <div className="flex items-center gap-3">
-                          <span className="w-[6px] h-[6px] bg-accent rounded-full"></span>
-                          <p className="text-white/60">{item.institution}</p>
+                          <span className="w-[6px] h-[6px] bg-indigo-700 dark:bg-accent rounded-full"></span>
+                          <p className="text-black/80 dark:text-white/60">
+                            {item.institution}
+                          </p>
                         </div>
                       </li>
                     ))}
@@ -272,7 +280,7 @@ const Resume = () => {
               <div className="flex flex-col gap-[30px]">
                 <div className="flex flex-col text-center lg:text-left gap-[30px]">
                   <h3 className="text-4xl font-bold">{skills.title}</h3>
-                  <p className="max-w-[600px] text-white/60 mx-auto lg:mx-0">
+                  <p className="max-w-[600px] text-black/80 dark:text-white/60 mx-auto lg:mx-0">
                     {skills.description}
                   </p>
                 </div>
@@ -282,8 +290,8 @@ const Resume = () => {
                       <li key={index} className="mb-4">
                         <TooltipProvider delayDuration={100}>
                           <Tooltip>
-                            <TooltipTrigger className="w-full h-[150px] bg-[#232329] rounded-xl justify-center items-center flex group">
-                              <div className="text-6xl group-hover:text-accent transition-all duration-300">
+                            <TooltipTrigger className="w-full h-[150px] bg-indigo-400 dark:bg-[#232329] rounded-xl justify-center items-center flex group">
+                              <div className="text-6xl group-hover:text-indigo-700 dark:group-hover:text-accent transition-all duration-300">
                                 {skill.icon}
                               </div>
                             </TooltipTrigger>
@@ -306,7 +314,7 @@ const Resume = () => {
             >
               <div className="flex flex-col gap-[30px]">
                 <h3 className="text-4xl font-bold">{about.title}</h3>
-                <p className="text-white/60 max-w-[600px] mx-auto lg:mx-0">
+                <p className="text-black/80 dark:text-white/60 max-w-[600px] mx-auto lg:mx-0">
                   {about.description}
                 </p>
                 <ul className="grid grid-cols-1 lg:grid-cols-2 gap-y-6 max-w-[620px] mx-auto lg:mx-0">
@@ -315,9 +323,11 @@ const Resume = () => {
                       key={index}
                       className="flex items-center justify-center lg:justify-start gap-4"
                     >
-                      <span className="text-white/60">
+                      <span className="text-black/80 dark:text-white/60">
                         {item.fieldName}
-                        <span className="text-accent">:</span>
+                        <span className="text-indigo-700 dark:text-accent">
+                          :
+                        </span>
                       </span>
                       <span className="text-xl">{item.feildValue}</span>
                     </li>

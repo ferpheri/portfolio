@@ -78,34 +78,39 @@ const Work = () => {
           <div className="w-full lg:w-[50%] lg:h-[460px] flex flex-col lg:justify-between order-2 lg:order-none">
             <div className="flex flex-col gap-[30px] h-[50%]">
               {/* outline num */}
-              <div className="text-8xl text-outline text-transparent leading-none font-extrabold">
+              <div className="text-8xl dark:dark-text-outline text-outline text-transparent leading-none font-extrabold">
                 {project.num}
               </div>
               {/* project category */}
-              <h2 className="text-[42px] font-bold text-white hover:text-accent leading-none transition-all duration-500 capitalize">
+              <h2 className="text-[42px] font-bold text-black dark:text-white hover:text-indigo-700 dark:hover:text-accent leading-none transition-all duration-500 capitalize">
                 {project.category} project
               </h2>
               {/* project description */}
-              <p className="text-white/60">{project.description}</p>
+              <p className=" text-black/80 dark:text-white/60">
+                {project.description}
+              </p>
               {/* project stack */}
               <ul className="flex gap-4">
                 {project.stack.map((item, index) => (
-                  <li key={index} className="text-xl text-accent">
+                  <li
+                    key={index}
+                    className="text-xl text-indigo-700 dark:text-accent"
+                  >
                     {item.name}
                     {index !== project.stack.length - 1 && ","}
                   </li>
                 ))}
               </ul>
               {/* border */}
-              <div className="border border-white/20" />
+              <div className="border border-black dark:border-white/20" />
               {/* buttons */}
               <div className="flex items-center gap-4">
                 {/* live project button */}
                 <Link href={project.live}>
                   <TooltipProvider delayDuration={100}>
                     <Tooltip>
-                      <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group">
-                        <BsArrowUpRight className="text-white text-3xl transition-all group-hover:text-accent group-hover:rotate-45  duration-500" />
+                      <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-indigo-400 dark:bg-white/5 flex justify-center items-center group">
+                        <BsArrowUpRight className="text-black dark:text-white text-3xl transition-all dark:group-hover:text-accent group-hover:text-indigo-800 group-hover:rotate-45 duration-500" />
                       </TooltipTrigger>
                       <TooltipContent>
                         <p>Live Projects</p>
@@ -117,8 +122,8 @@ const Work = () => {
                 <Link href={project.github}>
                   <TooltipProvider delayDuration={100}>
                     <Tooltip>
-                      <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group">
-                        <BsGithub className="text-white text-3xl group-hover:text-accent group-hover:text-4xl duration-500 transition-all" />
+                      <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-indigo-400 dark:bg-white/5 flex justify-center items-center group">
+                        <BsGithub className="text-black dark:text-white text-3xl dark:group-hover:text-accent group-hover:text-indigo-800 group-hover:text-4xl duration-500 transition-all" />
                       </TooltipTrigger>
                       <TooltipContent>
                         <p>Github repository</p>
@@ -156,7 +161,7 @@ const Work = () => {
               {/* slider buttons */}
               <WorkSliderBtns
                 conatinerStyles="flex gap-2 absolute right-0 bottom-[calc(50%_-_22px)] lg:bottom-2 w-full z-20 justify-between lg:w-max lg:justify-start"
-                btnStyles="bg-accent hover:bg-accent-hover text-primary text-[22px] w-[44px] h-[44px] flex justify-center items-center transition-all rounded-md"
+                btnStyles="bg-indigo-700 dark:bg-accent dark:hover:bg-accent-hover hover:bg-indigo-600 text-primary text-[22px] w-[44px] h-[44px] flex justify-center items-center transition-all rounded-md"
               />
             </Swiper>
           </div>

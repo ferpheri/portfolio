@@ -48,10 +48,12 @@ const Contact = () => {
           <div className="lg:w-[54%] order-2 lg:order-none">
             <form
               action=""
-              className="flex flex-col gap-6 p-10 bg-[#27272c] rounded-xl"
+              className="flex flex-col gap-6 p-10 bg-indigo-400 dark:bg-[#27272c] rounded-xl"
             >
-              <h3 className="text-4xl text-accent">Let's work together</h3>
-              <p className="text-white/60">
+              <h3 className="text-4xl text-indigo-900 dark:text-accent">
+                Let's work together
+              </h3>
+              <p className="text-black/80 dark:text-white/60">
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum
                 necessitatibus voluptates iste quia adipisci.
               </p>
@@ -92,11 +94,13 @@ const Contact = () => {
             <ul className="flex flex-col gap-10">
               {info.map((item, index) => (
                 <li key={index} className="flex items-center gap-6">
-                  <div className="w-[52px] h-[52px] lg:w-[72px] lg:h-[72px] bg-[#27272c] text-accent rounded-md flex items-center justify-center">
+                  <div className="w-[52px] h-[52px] lg:w-[72px] lg:h-[72px] bg-indigo-400 dark:bg-[#27272c] text-indigo-900 dark:text-accent rounded-md flex items-center justify-center">
                     <div className="text-[28px]">{item.icon}</div>
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-white/60">{item.title}</h3>
+                    <h3 className="text-black/80 dark:text-white/60">
+                      {item.title}
+                    </h3>
                     <p className="text-xl">{item.description}</p>
                   </div>
                 </li>

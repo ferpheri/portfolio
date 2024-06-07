@@ -1,10 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 
 @layer base {
   body {
-    @apply font-primary bg-primary text-white leading-loose;
+    @apply font-primary bg-indigo-200 dark:bg-primary dark:text-white text-black leading-loose;
   }
   .h1 {
     @apply text-[48px] lg:text-[50px] leading-[1.1] font-semibold;
@@ -15,11 +16,18 @@
   .h3 {
     @apply text-[20px] lg:text-[24px] leading-[1.1] font-semibold;
   }
-  .text-outline {
+  .dark-text-outline {
     -webkit-text-stroke: 1px #ffffff;
   }
 
-  .text-outline-hover {
+  .dark-text-outline-hover {
     -webkit-text-stroke: 1px #00ff99;
+  }
+  .text-outline {
+    -webkit-text-stroke: 2px #000000;
+  }
+
+  .text-outline-hover {
+    -webkit-text-stroke: 2px #303f9f;
   }
 }

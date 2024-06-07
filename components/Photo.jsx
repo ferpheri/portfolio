@@ -2,7 +2,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 
-const Photo = () => {
+const Photo = ({theme}) => {
   return (
     <div className="w-full h-full relative ">
       <motion.div
@@ -41,7 +41,7 @@ const Photo = () => {
             cx="253"
             cy="253"
             r="250"
-            stroke="#00ff99"
+            stroke={theme === "dark" ? "#00ff99" : "#303F9F"}
             strokeWidth="4"
             strokeLinecap="round"
             strokeLinejoin="round"
