@@ -3,6 +3,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { CiMenuFries } from "react-icons/ci";
+import { useState } from "react";
 
 const links = [
   {
@@ -29,8 +30,12 @@ const links = [
 
 const MobileNav = () => {
   const pathname = usePathname();
+  const [isOpen,setIsOpen] = useState(false);
+  const handleLinkClick = () =>{
+    setIsOpen(false);
+  }
   return (
-    <Sheet>
+    <Sheet open={isOpen} onOpenChange={setIsOpen}>
       <SheetTrigger className="flex justify-center items-center">
         <CiMenuFries className="text-[32px] dark:text-accent text-indigo-700" />
       </SheetTrigger>
@@ -48,6 +53,7 @@ const MobileNav = () => {
               key={index}
               href={link.path}
               className={`${link.path === pathname && "dark:text-accent text-indigo-700 border-b-2 dark:border-accent border-indigo-700"} text-xl capitalize dark:hover:text-accent hover:text-indigo-700 transition-all`}
+              onClick={handleLinkClick}
             >
               {link.name}
             </Link>
