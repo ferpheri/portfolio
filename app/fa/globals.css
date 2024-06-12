@@ -1,8 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-
+@font-face {
+  font-family: "Peyda";
+  src:
+    url("/fonts/Peyda-Medium(@vieratec).ttf") format("truetype"),
+    url("/fonts/Peyda-Regular(@vieratec).ttf") format("truetype");
+  /* Add more font formats if necessary for wider browser support */
+  font-weight: normal;
+  font-style: normal;
+}
 @layer base {
   body {
     @apply font-secondary bg-indigo-200 dark:bg-primary dark:text-white text-black leading-loose;
