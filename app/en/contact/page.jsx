@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/select";
 import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
 import { motion } from "framer-motion";
+import useLanguage from "@/components/useLanguage";
 
 const info = [
   {
@@ -33,6 +34,7 @@ const info = [
 ];
 
 const Contact = () => {
+  const lang = useLanguage()
   return (
     <motion.section
       initial={{ opacity: 0 }}

@@ -21,6 +21,7 @@ module.exports = {
     },
     fontFamily: {
       primary: 'var(--font-jetbrainsMono)',
+      secondary: 'Peyda',
     },
     extend: {
 

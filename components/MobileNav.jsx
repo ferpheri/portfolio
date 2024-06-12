@@ -7,28 +7,28 @@ import { useState } from "react";
 
 const links = [
   {
-    name: "home",
-    path: "/",
+    name: { en: "home", fa: "خانه" },
+    path: { en: "/", fa: "/fa" },
   },
   {
-    name: "services",
-    path: "/services",
+    name: { en: "services", fa: "خدمات" },
+    path: { en: "/services", fa: "/fa/services" },
   },
   {
-    name: "resume",
-    path: "/resume",
+    name: { en: "resume", fa: "رزومه" },
+    path: { en: "/resume", fa: "/fa/resume" },
   },
   {
-    name: "work",
-    path: "/work",
+    name: { en: "work", fa: "کارها" },
+    path: { en: "/work", fa: "/fa/work" },
   },
   {
-    name: "contact",
-    path: "/contact",
+    name: { en: "contact", fa: "تماس" },
+    path: { en: "/contact", fa: "/fa/contact" },
   },
 ];
 
-const MobileNav = () => {
+const MobileNav = ({currentLang}) => {
   const pathname = usePathname();
   const [isOpen,setIsOpen] = useState(false);
   const handleLinkClick = () =>{
@@ -51,11 +51,11 @@ const MobileNav = () => {
           {links.map((link, index) => (
             <Link
               key={index}
-              href={link.path}
-              className={`${link.path === pathname && "dark:text-accent text-indigo-700 border-b-2 dark:border-accent border-indigo-700"} text-xl capitalize dark:hover:text-accent hover:text-indigo-700 transition-all`}
+              href={`${link.path[currentLang]}`}
+              className={`${link.path[currentLang] === pathname && "dark:text-accent text-indigo-700 border-b-2 dark:border-accent border-indigo-700"} text-xl capitalize dark:hover:text-accent hover:text-indigo-700 transition-all`}
               onClick={handleLinkClick}
             >
-              {link.name}
+              {link.name[currentLang]}
             </Link>
           ))}
         </nav>

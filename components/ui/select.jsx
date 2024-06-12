@@ -5,6 +5,7 @@ import * as SelectPrimitive from "@radix-ui/react-select";
 import { Check, ChevronDown, ChevronUp } from "lucide-react";
 
 import { cn } from "@/lib/utils";
+import useLanguage from "../useLanguage";
 
 const Select = SelectPrimitive.Root;
 
@@ -13,21 +14,31 @@ const SelectGroup = SelectPrimitive.Group;
 const SelectValue = SelectPrimitive.Value;
 
 const SelectTrigger = React.forwardRef(
-  ({ className, children, ...props }, ref) => (
-    <SelectPrimitive.Trigger
-      ref={ref}
-      className={cn(
-        "flex h-[48px] w-full items-center justify-between rounded-md border border-white/10 px-4 py-5 bg-indigo-200 dark:bg-primary text-base text-black/80 dark:text-white/60 placeholder:text-black/80 dark:placeholder:text-white/10 focus:border-indigo-700 dark:focus:border-accent outline-none",
-        className
-      )}
-      {...props}
-    >
-      {children}
-      <SelectPrimitive.Icon asChild>
-        <ChevronDown className="h-4 w-4 opacity-50" />
-      </SelectPrimitive.Icon>
-    </SelectPrimitive.Trigger>
-  )
+  ({ className, children, ...props }, ref) => {
+    const lang = useLanguage();
+    return (
+      <SelectPrimitive.Trigger
+        ref={ref}
+        className={cn(
+          "flex h-[48px] w-full items-center justify-between rounded-md border border-white/10 px-4 py-5 bg-indigo-200 dark:bg-primary text-base text-black/80 dark:text-white/60 placeholder:text-black/80 dark:placeholder:text-white/10 focus:border-indigo-700 dark:focus:border-accent outline-none",
+          className
+        )}
+        {...props}
+      >
+        {lang === "fa" && (
+          <SelectPrimitive.Icon asChild>
+            <ChevronDown className="h-4 w-4 opacity-50" />
+          </SelectPrimitive.Icon>
+        )}
+        {children}
+        {lang !== "fa" && (
+          <SelectPrimitive.Icon asChild>
+            <ChevronDown className="h-4 w-4 opacity-50" />
+          </SelectPrimitive.Icon>
+        )}
+      </SelectPrimitive.Trigger>
+    );
+  }
 );
 SelectTrigger.displayName = SelectPrimitive.Trigger.displayName;
 

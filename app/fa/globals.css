@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer base {
+  body {
+    @apply font-secondary bg-indigo-200 dark:bg-primary dark:text-white text-black leading-loose;
+  }
+  .h1 {
+    @apply text-[48px] lg:text-[50px] leading-[1.1] font-semibold;
+  }
+  .h2 {
+    @apply text-[36px] lg:text-[48px] leading-[1.1] font-semibold;
+  }
+  .h3 {
+    @apply text-[20px] lg:text-[24px] leading-[1.1] font-semibold;
+  }
+  .dark-text-outline {
+    -webkit-text-stroke: 1px #ffffff;
+  }
+
+  .dark-text-outline-hover {
+    -webkit-text-stroke: 1px #00ff99;
+  }
+  .text-outline {
+    -webkit-text-stroke: 2px #000000;
+  }
+
+  .text-outline-hover {
+    -webkit-text-stroke: 2px #303f9f;
+  }
+}

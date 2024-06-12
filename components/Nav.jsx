@@ -4,37 +4,38 @@ import { usePathname } from "next/navigation";
 
 const links = [
   {
-    name: "home",
-    path: "/",
+    name: { en: "home", fa: "خانه" },
+    path: {en:"/",fa:'/fa'},
   },
   {
-    name: "services",
-    path: "/services",
+    name: { en: "services", fa: "خدمات" },
+    path: {en:"/services", fa:'/fa/services'},
   },
   {
-    name: "resume",
-    path: "/resume",
+    name: { en: "resume", fa: "رزومه" },
+    path: {en:"/resume", fa:'/fa/resume'},
   },
   {
-    name: "work",
-    path: "/work",
+    name: { en: "work", fa: "کارها" },
+    path: {en:"/work", fa:'/fa/work'},
   },
   {
-    name: "contact",
-    path: "/contact",
+    name: { en: "contact", fa: "تماس" },
+    path: {en:"/contact", fa:'/fa/contact'},
   },
 ];
-const Nav = () => {
+const Nav = ({ currentLang }) => {
+  
   const pathName = usePathname();
   return (
     <nav className="flex gap-8">
       {links.map((link, index) => (
         <Link
-          href={link.path}
+          href={`${link.path[currentLang]}`}
           key={index}
-          className={`${link.path === pathName && "dark:text-accent text-indigo-700 border-b-2 dark:border-accent border-indigo-700"} capitalize font-medium dark:hover:text-accent hover:text-indigo-700 transition-all`}
+          className={`${link.path[currentLang] === pathName && "dark:text-accent text-indigo-700 border-b-2 dark:border-accent border-indigo-700"} capitalize font-medium dark:hover:text-accent hover:text-indigo-700 transition-all`}
         >
-          {link.name}
+          {link.name[currentLang]}
         </Link>
       ))}
     </nav>
