@@ -28,18 +28,18 @@ const links = [
   },
 ];
 
-const MobileNav = ({currentLang}) => {
+const MobileNav = ({ currentLang }) => {
   const pathname = usePathname();
-  const [isOpen,setIsOpen] = useState(false);
-  const handleLinkClick = () =>{
+  const [isOpen, setIsOpen] = useState(false);
+  const handleLinkClick = () => {
     setIsOpen(false);
-  }
+  };
   return (
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
       <SheetTrigger className="flex justify-center items-center">
         <CiMenuFries className="text-[32px] dark:text-accent text-indigo-700" />
       </SheetTrigger>
-      <SheetContent className="flex flex-col">
+      <SheetContent className="flex flex-col overflow-auto">
         <div className="mt-24 mb-10 text-center text-2xl">
           <Link href="/">
             <h1 className="text-4xl font-semibold">

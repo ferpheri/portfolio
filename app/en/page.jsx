@@ -8,7 +8,6 @@ import { FiDownload } from "react-icons/fi";
 
 const Home = () => {
   const { theme } = useTheme();
-  console.log(theme);
   return (
     <section className="h-full">
       <div className="container mx-auto h-full mt-12">
@@ -32,10 +31,13 @@ const Home = () => {
                 variant="outline"
                 size="lg"
                 className="uppercase flex items-center gap-2"
+                href="/CV.pdf"
+                download="Mohamad_Dehghanian_CV.pdf"
               >
                 <span>Download CV</span>
                 <FiDownload className="text-xl" />
               </Button>
+
               <div className="mb-8 lg:mb-0">
                 <Socials
                   containerStyles="flex gap-6"

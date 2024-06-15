@@ -26,8 +26,10 @@ const Home = () => {
                 محمد دهقانیان هستم
               </span>
             </h1>
-            <p className="max-w-[500px] mb-9 dark:text-white/80 text-indigo-600"
-            style={{direction:'rtl'}}>
+            <p
+              className="max-w-[500px] mb-9 dark:text-white/80 text-indigo-600"
+              style={{ direction: "rtl" }}
+            >
               من در ایجاد تجربه دیجیتالی زیبا و در زبان های برنامه نویسی و
               فناوری های مختلف مهارت دارم.
             </p>
@@ -37,6 +39,8 @@ const Home = () => {
                 variant="outline"
                 size="lg"
                 className="uppercase flex items-center gap-2"
+                href="/CV.pdf"
+                download="Mohamad_Dehghanian_CV.pdf"
               >
                 <span>دانلود رزومه</span>
                 <FiDownload className="text-xl" />
