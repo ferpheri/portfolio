@@ -3,6 +3,7 @@ import CountUp from "react-countup";
 import { motion } from "framer-motion";
 import useLanguage from "./useLanguage";
 import numeral from "numeral";
+import { useMemo } from "react";
 
 const formatNumber = (num, lang) => {
   if (lang === "fa") {
@@ -22,9 +23,33 @@ const stats = [
 
 const Stats = () => {
   const currentLang = useLanguage();
+
+  const memoizedStats = useMemo(() => {
+    return stats.map((stat, index) => (
+      <div
+        className={`flex flex-col lg:flex-row md:flex-row items-center lg:items-center justify-center text-center ${currentLang === "fa" ? "gap-x-2 lg:justify-end" : "gap-0 lg:justify-start"}`}
+        key={index}
+        style={{ direction: currentLang === "fa" ? "rtl" : "ltr" }}
+      >
+        <CountUp
+          end={stat.num}
+          delay={3}
+          duration={5}
+          formattingFn={(num) => formatNumber(num, currentLang)}
+          className="text-4xl lg:text-6xl font-extrabold text-indigo-900 dark:text-accent"
+        />
+        <p
+          className={`mt-2 lg:mt-0 lg:ml-2 ${stat.text[currentLang].length < 15 ? "max-w-[100px]" : "max-w-[150px]"} ${currentLang === "fa" ? "whitespace-nowrap" : ""} leading-snug text-black dark:text-white/80`}
+        >
+          {stat.text[currentLang]}
+        </p>
+      </div>
+    ));
+  }, [currentLang]); // Only re-calculate when currentLang changes
+
   return (
     <motion.section
-      className="pt-4 pb-12 lg:pt-0 w-full mt-[20px] "
+      className="pt-4 pb-12 lg:pt-0 w-full mt-[20px]"
       initial={{ opacity: 0 }}
       animate={{
         opacity: 1,
@@ -33,26 +58,7 @@ const Stats = () => {
     >
       <div className="container mx-auto">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-[80vw] mx-auto lg:max-w-none">
-          {stats.map((stat, index) => (
-            <div
-              className={`flex flex-col lg:flex-row md:flex-row items-center lg:items-center justify-center text-center  ${currentLang === "fa" ? "gap-x-2 lg:justify-end" : "gap-0 lg:justify-start"}`}
-              key={index}
-              style={{ direction: currentLang === "fa" ? "rtl" : "ltr" }}
-            >
-              <CountUp
-                end={stat.num}
-                delay={3}
-                duration={5}
-                formattingFn={(num) => formatNumber(num, currentLang)}
-                className="text-4xl lg:text-6xl font-extrabold text-indigo-900 dark:text-accent"
-              />
-              <p
-                className={`mt-2 lg:mt-0 lg:ml-2 ${stat.text[currentLang].length < 15 ? "max-w-[100px]" : "max-w-[150px]"} ${currentLang === "fa" ? "whitespace-nowrap" : ""} leading-snug text-black dark:text-white/80`}
-              >
-                {stat.text[currentLang]}
-              </p>
-            </div>
-          ))}
+          {memoizedStats}
         </div>
       </div>
     </motion.section>
