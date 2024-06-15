@@ -6,13 +6,13 @@ import { Button } from "@/components/ui/button";
 import useTheme from "@/components/useTheme";
 import { FiDownload } from "react-icons/fi";
 
-
 const Home = () => {
-  const {theme} = useTheme();
+  const { theme } = useTheme();
+  console.log(theme);
   return (
     <section className="h-full">
-      <div className="container mx-auto h-full">
-        <div className="flex flex-col lg:flex-row items-center justify-between lg:pt-5 lg:pb-20">
+      <div className="container mx-auto h-full mt-12">
+        <div className="flex flex-col lg:flex-row items-center justify-between lg:pt-5 lg:pb-3">
           {/* text */}
           <div className="text-center lg:text-left order-2 lg:order-none">
             <span className="text-xl">Software Developer</span>
@@ -22,7 +22,7 @@ const Home = () => {
                 Mohamad Dehghanian
               </span>
             </h1>
-          <p className="max-w-[500px] mb-9 dark:text-white/80 text-indigo-600">
+            <p className="max-w-[500px] mb-9 dark:text-white/80 text-indigo-600">
               I excel at crafting elegant digital experience and I am proficient
               in various programming languages and technologies.
             </p>

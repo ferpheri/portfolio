@@ -73,7 +73,7 @@ const Work = () => {
       }}
       className="min-h-[80vh] flex flex-col justify-center py-12 lg:px-0 lg:py-0"
     >
-      <div className="container mx-auto">
+      <div className="container mx-auto mt-12">
         <div className="flex flex-col lg:flex-row lg:gap-[30px]">
           <div className="w-full lg:w-[50%] lg:h-[460px] flex flex-col lg:justify-between order-2 lg:order-none">
             <div className="flex flex-col gap-[30px] h-[50%]">

@@ -13,7 +13,6 @@ import {
 } from "@/components/ui/select";
 import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
 import { motion } from "framer-motion";
-import useLanguage from "@/components/useLanguage";
 
 const info = [
   {
@@ -34,7 +33,6 @@ const info = [
 ];
 
 const Contact = () => {
-  const lang = useLanguage();
   return (
     <motion.section
       initial={{ opacity: 0 }}
@@ -42,9 +40,9 @@ const Contact = () => {
         opacity: 1,
         transition: { delay: 2.4, duration: 0.4, ease: "easeIn" },
       }}
-      className="py-6 lg:py-0"
+      className="py-6 lg:py-0 "
     >
-      <div className="container mx-auto">
+      <div className="container mx-auto mt-12">
         <div className="flex flex-col lg:flex-row gap-[30px] text-right">
           {/* info */}
           <div className="flex flex-1 items-center justify-center lg:justify-start order-1 lg:order-none mb-8 lg:mb-0">
@@ -73,7 +71,10 @@ const Contact = () => {
               <h3 className="text-4xl text-indigo-900 dark:text-accent">
                 شروع همکاری
               </h3>
-              <p className="text-black/80 dark:text-white/60">
+              <p
+                className="text-black/80 dark:text-white/60"
+                style={{ direction: "rtl" }}
+              >
                 لورم ایپسوم متن ساختگی با تولید نامفهوم از صنعت چاپ و با استفاده
                 از طراحان گرافیک است.
               </p>

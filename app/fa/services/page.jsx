@@ -8,35 +8,35 @@ const services = [
     title: "توسعه وب",
     description:
       "لورم ایپسوم متن ساختگی با تولید نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.",
-    href: "",
+    href: "/fa/contact",
   },
   {
     num: "۰۲",
     title: "برنامه نویسی ربات",
     description:
       "لورم ایپسوم متن ساختگی با تولید نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.",
-    href: "",
+    href: "/fa/contact",
   },
   {
     num: "۰۳",
     title: "طراحی وب",
     description:
       "لورم ایپسوم متن ساختگی با تولید نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.",
-    href: "",
+    href: "/fa/contact",
   },
   {
     num: "۰۴",
     title: "سئو",
     description:
       "لورم ایپسوم متن ساختگی با تولید نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.",
-    href: "",
+    href: "/fa/contact",
   },
 ];
 
 const Services = () => {
   return (
     <section className="min-h-[80vh] flex flex-col justify-center py-12 lg:py-0">
-      <div className="container mx-auto">
+      <div className="container mx-auto mt-12">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{
@@ -67,7 +67,10 @@ const Services = () => {
                 {service.title}
               </h2>
               {/* description */}
-              <p className="text-black/80 dark:text-white/60">
+              <p
+                className="text-black/80 dark:text-white/60"
+                style={{ direction: "rtl" }}
+              >
                 {service.description}
               </p>
               <div className="border-b border-black dark:border-white/20 w-full" />

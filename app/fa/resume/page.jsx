@@ -194,7 +194,7 @@ const Resume = () => {
       }}
       className="min-h-[80vh] flex items-center justify-center py-12 lg:py-0"
     >
-      <div className="container mx-auto">
+      <div className="container mx-auto mt-12">
         <Tabs
           defaultValue="experience"
           className="flex flex-col lg:flex-row gap-[60px]"
@@ -213,7 +213,10 @@ const Resume = () => {
             <TabsContent value="experience" className="w-full ">
               <div className="flex flex-col gap-[30px] text-center lg:text-right ">
                 <h3 className="text-4xl font-bold">{experience.title}</h3>
-                <p className="max-w-[600px] text-black/80 dark:text-white/60 mx-auto lg:mx-0 lg:max-w-[750px]">
+                <p
+                  className="max-w-[600px] text-black/80 dark:text-white/60 mx-auto lg:mx-0 lg:max-w-[750px]"
+                  style={{ direction: "rtl" }}
+                >
                   {experience.description}
                 </p>
                 <ScrollArea className="h-[300px]">
@@ -229,9 +232,15 @@ const Resume = () => {
                         <h3 className="text-xl max-w-[260px] min-h-[60px] text-center md:text-right">
                           {item.position}
                         </h3>
-                        <div className="flex items-center gap-3">
+                        <div
+                          className="flex items-center gap-3"
+                          style={{ direction: "rtl" }}
+                        >
                           <span className="w-[6px] h-[6px] bg-indigo-700 dark:bg-accent rounded-full"></span>
-                          <p className="text-black/80 dark:text-white/60">
+                          <p
+                            className="text-black/80 dark:text-white/60"
+                            style={{ direction: "rtl" }}
+                          >
                             {item.company}
                           </p>
                         </div>
@@ -246,7 +255,10 @@ const Resume = () => {
             <TabsContent value="education" className="w-full">
               <div className="flex flex-col gap-[30px] text-center lg:text-right">
                 <h3 className="text-4xl font-bold">{education.title}</h3>
-                <p className="max-w-[600px] text-black/80 dark:text-white/60 mx-auto lg:mx-0 lg:max-w-[750px]">
+                <p
+                  className="max-w-[600px] text-black/80 dark:text-white/60 mx-auto lg:mx-0 lg:max-w-[750px]"
+                  style={{ direction: "rtl" }}
+                >
                   {education.description}
                 </p>
                 <ScrollArea className="h-[300px]">
@@ -254,7 +266,7 @@ const Resume = () => {
                     {education.items.map((item, index) => (
                       <li
                         key={index}
-                        className="bg-indigo-400 dark:bg-[#232329] h-[184px] py-6 px-10 rounded-xl flex flex-col justify-center items-center lg:items-start gap-1"
+                        className="bg-indigo-400 dark:bg-[#232329] h-[184px] py-6 px-10 rounded-xl flex flex-col justify-center items-center lg:items-end gap-1"
                       >
                         <span className="text-indigo-950 dark:text-accent">
                           {item.duration}
@@ -262,7 +274,10 @@ const Resume = () => {
                         <h3 className="text-xl max-w-[260px] min-h-[60px] text-center md:text-right">
                           {item.degree}
                         </h3>
-                        <div className="flex items-center gap-3">
+                        <div
+                          className="flex items-center gap-3"
+                          style={{ direction: "rtl" }}
+                        >
                           <span className="w-[6px] h-[6px] bg-indigo-700 dark:bg-accent rounded-full"></span>
                           <p className="text-black/80 dark:text-white/60">
                             {item.institution}
@@ -280,7 +295,10 @@ const Resume = () => {
               <div className="flex flex-col gap-[30px]">
                 <div className="flex flex-col text-center lg:text-right gap-[30px]">
                   <h3 className="text-4xl font-bold">{skills.title}</h3>
-                  <p className="max-w-[600px] text-black/80 dark:text-white/60 mx-auto lg:mx-0 lg:max-w-[750px]">
+                  <p
+                    className="max-w-[600px] text-black/80 dark:text-white/60 mx-auto lg:mx-0 lg:max-w-[750px]"
+                    style={{ direction: "rtl" }}
+                  >
                     {skills.description}
                   </p>
                 </div>
@@ -314,7 +332,10 @@ const Resume = () => {
             >
               <div className="flex flex-col gap-[30px]">
                 <h3 className="text-4xl font-bold">{about.title}</h3>
-                <p className="text-black/80 dark:text-white/60 max-w-[600px] mx-auto lg:mx-0 lg:max-w-[750px]">
+                <p
+                  className="text-black/80 dark:text-white/60 max-w-[600px] mx-auto lg:mx-0 lg:max-w-[750px]"
+                  style={{ direction: "rtl" }}
+                >
                   {about.description}
                 </p>
                 <ul className="grid grid-cols-1 lg:grid-cols-2 gap-y-6 max-w-[620px] mx-auto lg:mx-0 lg:max-w-[750px] lg:gap-x-48">

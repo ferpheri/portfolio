@@ -8,35 +8,35 @@ const services = [
     title: "Web Development",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt nemo.",
-    href: "",
+    href: "/contact",
   },
   {
     num: "02",
     title: "Code Robots",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt nemo.",
-    href: "",
+    href: "/contact",
   },
   {
     num: "03",
     title: "Web Designer",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt nemo.",
-    href: "",
+    href: "/contact",
   },
   {
     num: "04",
     title: "SEO",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt nemo.",
-    href: "",
+    href: "/contact",
   },
 ];
 
 const Services = () => {
   return (
     <section className="min-h-[80vh] flex flex-col justify-center py-12 lg:py-0">
-      <div className="container mx-auto">
+      <div className="container mx-auto mt-12">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{

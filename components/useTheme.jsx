@@ -4,7 +4,7 @@ import { useEffect } from "react";
 
 const useTheme = create((set) => ({
   theme:
-    (typeof window !== "undefined" && localStorage.getItem("theme")),
+    (typeof window !== "undefined" && localStorage.getItem("theme") === 'dark'),
   setTheme: (newTheme) => {
     set({ theme: newTheme });
     if (typeof window !== "undefined") {

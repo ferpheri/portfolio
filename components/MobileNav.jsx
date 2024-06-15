@@ -40,7 +40,7 @@ const MobileNav = ({currentLang}) => {
         <CiMenuFries className="text-[32px] dark:text-accent text-indigo-700" />
       </SheetTrigger>
       <SheetContent className="flex flex-col">
-        <div className="mt-24 mb-24 text-center text-2xl">
+        <div className="mt-24 mb-10 text-center text-2xl">
           <Link href="/">
             <h1 className="text-4xl font-semibold">
               Ferferi<span className="dark:text-accent text-indigo-700">.</span>

@@ -73,7 +73,7 @@ const Work = () => {
       }}
       className="min-h-[80vh] flex flex-col justify-center py-12 lg:px-0 lg:py-0"
     >
-      <div className="container mx-auto">
+      <div className="container mx-auto mt-12">
         <div className="flex flex-col lg:flex-row lg:gap-[30px]">
           <div className="w-full lg:w-[50%]">
             <Swiper
@@ -117,7 +117,8 @@ const Work = () => {
                 {project.category} پروژه
               </h2>
               {/* project description */}
-              <p className=" text-black/80 dark:text-white/60">
+              <p className=" text-black/80 dark:text-white/60"
+              style={{direction: "rtl"}}>
                 {project.description}
               </p>
               {/* project stack */}

@@ -3,15 +3,20 @@ import Photo from "@/components/Photo";
 import Socials from "@/components/Socials";
 import Stats from "@/components/Stats";
 import { Button } from "@/components/ui/button";
-import useTheme from "@/components/useTheme";
+import useTheme, { useThemeSync } from "@/components/useTheme";
 import { FiDownload } from "react-icons/fi";
 
 const Home = () => {
   const { theme } = useTheme();
+
   return (
     <section className="h-full">
-      <div className="container mx-auto h-full">
-        <div className="flex flex-col lg:flex-row items-center justify-between lg:pt-5 lg:pb-20">
+      <div className="container mx-auto h-full mt-12">
+        <div className="flex flex-col lg:flex-row items-center justify-between lg:pt-5 lg:pb-3">
+          {/* photo */}
+          <div className="order-1 lg:order-none -mt-14 lg:mb-0">
+            <Photo theme={theme} />
+          </div>
           {/* text */}
           <div className="text-center lg:text-right order-2 lg:order-none">
             <span className="text-xl">توسعه دهنده نرم افزار</span>
@@ -21,7 +26,8 @@ const Home = () => {
                 محمد دهقانیان هستم
               </span>
             </h1>
-            <p className="max-w-[500px] mb-9 dark:text-white/80 text-indigo-600">
+            <p className="max-w-[500px] mb-9 dark:text-white/80 text-indigo-600"
+            style={{direction:'rtl'}}>
               من در ایجاد تجربه دیجیتالی زیبا و در زبان های برنامه نویسی و
               فناوری های مختلف مهارت دارم.
             </p>
@@ -43,15 +49,9 @@ const Home = () => {
               </div>
             </div>
           </div>
-          {/* photo */}
-          <div className="order-1 lg:order-none -mt-14 lg:mb-0">
-            <Photo theme={theme} />
-          </div>
         </div>
       </div>
-      <div className="">
       <Stats />
-      </div>
     </section>
   );
 };
