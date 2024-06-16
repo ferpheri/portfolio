@@ -2,40 +2,34 @@
 import { BsArrowDownRight } from "react-icons/bs";
 import Link from "next/link";
 import { motion } from "framer-motion";
+
 const services = [
   {
     num: "01",
     title: "Web Development",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt nemo.",
+      "Creating user-friendly and functional websites with a focus on speed and security.",
     href: "/contact",
   },
   {
     num: "02",
     title: "Code Robots",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt nemo.",
+      "Programming robots to automate tasks, improving efficiency and reducing costs.",
     href: "/contact",
   },
   {
     num: "03",
-    title: "Web Designer",
+    title: "Web Design",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt nemo.",
-    href: "/contact",
-  },
-  {
-    num: "04",
-    title: "SEO",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt nemo.",
+      "Designing creative and unique web layouts to enhance user experience.",
     href: "/contact",
   },
 ];
 
 const Services = () => {
   return (
-    <section className="min-h-[80vh] flex flex-col justify-center py-12 lg:py-0">
+    <section className="min-h-[80vh] flex flex-col justify-start py-12 lg:py-0">
       <div className="container mx-auto mt-12">
         <motion.div
           initial={{ opacity: 0 }}
@@ -43,12 +37,16 @@ const Services = () => {
             opacity: 1,
             transition: { delay: 2.4, duration: 0.4, ease: "easeIn" },
           }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-[60px]"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-[60px]"
         >
           {services.map((service, index) => (
             <div
               key={index}
-              className="flex flex-1 flex-col justify-center gap-6 group"
+              className={`flex flex-1 flex-col justify-center gap-6 group ${
+                index === 2
+                  ? "lg:col-span-2 lg:col-start-1 lg:col-end-3 lg:mx-auto lg:w-2/3"
+                  : ""
+              }`}
             >
               <div className="w-full flex justify-between items-center">
                 {/* top */}
@@ -78,4 +76,5 @@ const Services = () => {
     </section>
   );
 };
+
 export default Services;

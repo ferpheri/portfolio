@@ -14,47 +14,45 @@ import Link from "next/link";
 import Image from "next/image";
 import WorkSliderBtns from "@/components/WorkSliderBtns";
 
+
+
 const projects = [
   {
     num: "۰۱",
     category: "frontend",
     title: "project1",
     description:
-      "لورم ایپسوم متن ساختگی با تولید نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.",
-    stack: [{ name: "Html 5" }, { name: "Css 3" }, { name: "Javascript" }],
-    image: "/assets/work/thumb1.png",
-    live: "",
-    github: "https://github.com/ferpheri/",
+      "این پروژه یه شبیه‌سازی از سایت اپل هست که تجربه کاربری فوق‌العاده‌ای رو نشون می‌ده. طراحی و عملکرد جالبش رو ببینید.",
+    stack: [{ name: "Next.js" }, { name: "Tailwind.css" }, { name: "Gsap" }],
+    image: "/assets/work/apple-final.png",
+    live: "https://apple-website-simulation.vercel.app/",
+    github: "https://github.com/ferpheri/Apple-Website-Simulation",
   },
   {
     num: "۰۲",
     category: "frontend",
     title: "project2",
     description:
-      "لورم ایپسوم متن ساختگی با تولید نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.",
+      "آماده پرتاب شو با این شبیه‌سازی جذاب موشک. یه سفر هیجان‌انگیز به دنیای فضانوردی در انتظارتونه.",
     stack: [
-      { name: "Next.js" },
+      { name: "Html 5" },
       { name: "Tailwind.css" },
       { name: "Javascript" },
     ],
-    image: "/assets/work/thumb2.png",
-    live: "",
-    github: "https://github.com/ferpheri/",
+    image: "/assets/work/rocket-final.png",
+    live: "https://fer-rockets.onrender.com/",
+    github: "https://github.com/ferpheri/Acme-Rockets/",
   },
   {
     num: "۰۳",
     category: "frontend",
     title: "project3",
     description:
-      "لورم ایپسوم متن ساختگی با تولید نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.",
-    stack: [
-      { name: "Next.js" },
-      { name: "Tailwind.css" },
-      { name: "Typescript" },
-    ],
-    image: "/assets/work/thumb3.png",
-    live: "",
-    github: "https://github.com/ferpheri/",
+      "هوس تاکو کردی؟ این شبیه‌سازی از یه فروشگاه تاکوی پرجنب‌وجوش، با فهرست غذای اختصاصی و ساعت کاری مشخصه.",
+    stack: [{ name: "Html 5" }, { name: "CSS 3" }, { name: "Javascript" }],
+    image: "/assets/work/taco-final.png",
+    live: "https://little-taco-shop-eta.vercel.app/",
+    github: "https://github.com/ferpheri/Little-Taco-Shop",
   },
 ];
 

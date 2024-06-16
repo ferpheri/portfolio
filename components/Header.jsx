@@ -34,7 +34,7 @@ const Header = () => {
   };
 
   useEffect(() => {
-    if (pathname === "/fa/contact" || pathname === "/contact") {
+    if (pathname === "/fa/contact" || pathname === "/contact" || window.innerHeight < 675) {
       document.body.classList.add("no-overflow");
     } else {
       document.body.classList.remove("no-overflow");
@@ -43,13 +43,14 @@ const Header = () => {
       document.body.classList.remove("no-overflow");
     };
   }, [pathname]);
-    useEffect(() => {
-      // Ensure the theme is set correctly when the component mounts
-      const storedTheme = localStorage.getItem("theme");
-      if (storedTheme && storedTheme !== theme) {
-        setTheme(storedTheme);
-      }
-    }, []);
+
+  useEffect(() => {
+    // Ensure the theme is set correctly when the component mounts
+    const storedTheme = localStorage.getItem("theme");
+    if (storedTheme && storedTheme !== theme) {
+      setTheme(storedTheme);
+    }
+  }, []);
 
   return (
     <header className="sticky top-0 z-20 bg-indigo-300 dark:bg-emerald-900 shadow-md dark:shadow-emerald-950">

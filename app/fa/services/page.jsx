@@ -7,35 +7,28 @@ const services = [
     num: "۰۱",
     title: "توسعه وب",
     description:
-      "لورم ایپسوم متن ساختگی با تولید نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.",
+      "توسعه وب شامل طراحی صفحات جذاب و کاربرپسند و پیاده‌سازی سیستم‌های پیچیده و کاربردی است. اطمینان حاصل می‌شود که وب‌سایت نه تنها زیبا بلکه سریع و امن باشد.",
     href: "/fa/contact",
   },
   {
     num: "۰۲",
     title: "برنامه نویسی ربات",
     description:
-      "لورم ایپسوم متن ساختگی با تولید نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.",
+      "ربات‌هایی طراحی و برنامه‌نویسی می‌شوند که وظایف تکراری و زمان‌بر را به صورت خودکار انجام دهند. این ربات‌ها در بهبود کارایی و کاهش هزینه‌ها نقش مهمی ایفا می‌کنند.",
     href: "/fa/contact",
   },
   {
     num: "۰۳",
     title: "طراحی وب",
     description:
-      "لورم ایپسوم متن ساختگی با تولید نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.",
-    href: "/fa/contact",
-  },
-  {
-    num: "۰۴",
-    title: "سئو",
-    description:
-      "لورم ایپسوم متن ساختگی با تولید نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.",
+      "طراحی وب ترکیبی از هنر و فناوری است. با ایجاد طرح‌های خلاقانه و منحصر به فرد، تجربه کاربری فوق‌العاده‌ای برای بازدیدکنندگان وب‌سایت فراهم می‌شود.",
     href: "/fa/contact",
   },
 ];
 
 const Services = () => {
   return (
-    <section className="min-h-[80vh] flex flex-col justify-center py-12 lg:py-0">
+    <section className="min-h-[80vh] flex flex-col justify-start py-12 lg:py-0">
       <div className="container mx-auto mt-12">
         <motion.div
           initial={{ opacity: 0 }}
@@ -43,12 +36,16 @@ const Services = () => {
             opacity: 1,
             transition: { delay: 2.4, duration: 0.4, ease: "easeIn" },
           }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-[60px]"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-[60px]"
         >
           {services.map((service, index) => (
             <div
               key={index}
-              className="flex flex-1 flex-col justify-center gap-6 group"
+              className={`flex flex-1 flex-col justify-center gap-6 group ${
+                index === 2
+                  ? "lg:col-span-2 lg:col-start-1 lg:col-end-3 lg:mx-auto lg:w-2/3"
+                  : ""
+              }`}
             >
               <div className="w-full flex justify-between items-center">
                 {/* top */}

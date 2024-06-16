@@ -20,41 +20,37 @@ const projects = [
     category: "frontend",
     title: "project1",
     description:
-      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam vel eveniet.",
-    stack: [{ name: "Html 5" }, { name: "Css 3" }, { name: "Javascript" }],
-    image: "/assets/work/thumb1.png",
-    live: "",
-    github: "https://github.com/ferpheri/",
+      "This project is a simulation of the Apple website, showcasing a seamless user experience. Explore its innovative design and functionality.",
+    stack: [{ name: "Next.js" }, { name: "Tailwind.css" }, { name: "Gsap" }],
+    image: "/assets/work/apple-final.png",
+    live: "https://apple-website-simulation.vercel.app/",
+    github: "https://github.com/ferpheri/Apple-Website-Simulation",
   },
   {
     num: "02",
     category: "frontend",
-    title: "project2",
+    title: "project3",
     description:
-      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam vel eveniet.",
+      "Get ready for liftoff with this engaging rocket simulation. It offers an immersive journey into the fascinating world of space exploration.",
     stack: [
-      { name: "Next.js" },
+      { name: "Html 5" },
       { name: "Tailwind.css" },
       { name: "Javascript" },
     ],
-    image: "/assets/work/thumb2.png",
-    live: "",
-    github: "https://github.com/ferpheri/",
+    image: "/assets/work/rocket-final.png",
+    live: "https://fer-rockets.onrender.com/",
+    github: "https://github.com/ferpheri/Acme-Rockets/",
   },
   {
     num: "03",
     category: "frontend",
-    title: "project3",
+    title: "project2",
     description:
-      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam vel eveniet.",
-    stack: [
-      { name: "Next.js" },
-      { name: "Tailwind.css" },
-      { name: "Typescript" },
-    ],
-    image: "/assets/work/thumb3.png",
-    live: "",
-    github: "https://github.com/ferpheri/",
+      "Craving tacos? This simulation of a vibrant taco shop brings the flavors to your screen.",
+    stack: [{ name: "Html 5" }, { name: "CSS 3" }, { name: "Javascript" }],
+    image: "/assets/work/taco-final.png",
+    live: "https://little-taco-shop-eta.vercel.app/",
+    github: "https://github.com/ferpheri/Little-Taco-Shop",
   },
 ];
 
@@ -134,7 +130,7 @@ const Work = () => {
               </div>
             </div>
           </div>
-          <div className="w-full xl:w-[50%]">
+          <div className="w-full lg:w-[50%]">
             <Swiper
               spaceBetween={30}
               slidesPerView={1}

@@ -33,7 +33,7 @@ import { motion } from "framer-motion";
 const about = {
   title: "About me",
   description:
-    "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos quisquam iure asperiores itaque placeat.",
+    "Passionate software engineer with experience in web development and robotics programming: ",
   info: [
     {
       fieldName: "Name",
@@ -68,7 +68,7 @@ const experience = {
   icon: "/assets/resume/badge.svg",
   title: "My experience",
   description:
-    "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos quisquam iure asperiores itaque placeat.",
+    "I have had the opportunity to work with various organizations and gain valuable experience in different roles:",
   items: [
     {
       company: "Shiraz Hub",
@@ -94,7 +94,7 @@ const education = {
   icon: "/assets/resume/cap.svg",
   title: "My education",
   description:
-    "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos quisquam iure asperiores itaque placeat.",
+    "I have pursued education in both software engineering and languages to broaden my knowledge:",
   items: [
     {
       institution: "Yazd University",
@@ -119,7 +119,7 @@ const education = {
 const skills = {
   title: "My skills",
   description:
-    "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos quisquam iure asperiores itaque placeat.",
+    "I have developed expertise in various technologies and tools essential for modern software development:",
   skillsList: [
     {
       icon: <FaHtml5 />,
@@ -213,7 +213,7 @@ const Resume = () => {
             <TabsContent value="experience" className="w-full">
               <div className="flex flex-col gap-[30px] text-center lg:text-left">
                 <h3 className="text-4xl font-bold">{experience.title}</h3>
-                <p className="max-w-[600px] text-black/80 dark:text-white/60 mx-auto lg:mx-0">
+                <p className="max-w-[600px] text-black/80 dark:text-white/60 mx-auto lg:mx-0 ">
                   {experience.description}
                 </p>
                 <ScrollArea className="h-[300px]">
