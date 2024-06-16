@@ -8,15 +8,6 @@ import { FiDownload } from "react-icons/fi";
 
 const Home = () => {
   const { theme } = useTheme();
-  const handleDownload = (event) => {
-    event.preventDefault();
-    const link = document.createElement("a");
-    link.href = "/CV.pdf";
-    link.download = "Mohamad_Dehghanian_CV.pdf";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
   return (
     <section className="h-full">
       <div className="container mx-auto h-full mt-12">
@@ -42,7 +33,6 @@ const Home = () => {
                 className="uppercase flex items-center gap-2"
                 href="/EN-CV.pdf"
                 download="Mohamad_Dehghanian_CV.pdf"
-                onClick={handleDownload}
               >
                 <span>Download CV</span>
                 <FiDownload className="text-xl" />
