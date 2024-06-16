@@ -31,7 +31,7 @@ const Home = () => {
                 variant="outline"
                 size="lg"
                 className="uppercase flex items-center gap-2"
-                href="/EN-CV.pdf"
+                href="/En-CV.pdf"
                 download="Mohamad_Dehghanian_CV.pdf"
               >
                 <span>Download CV</span>
