@@ -1,4 +1,5 @@
 "use client";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -15,38 +16,6 @@ import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
 import { motion } from "framer-motion";
 import emailjs from "emailjs-com";
 import Modal from "@/components/Modal";
-import { useState } from "react";
-
-const sendEmail = (e, setModalInfo, resetForm) => {
-  e.preventDefault();
-
-  emailjs
-    .sendForm(
-      "service_g04mdgm",
-      "template_6dp3fnr",
-      e.target,
-      "Agg89X9B4Qni1Fyqq"
-    )
-    .then(
-      (result) => {
-        setModalInfo({
-          show: true,
-          title: "موفق!",
-          message: "پیام شما با موفقیت ارسال شد!",
-          isError: false,
-        });
-        resetForm(e.target);
-      },
-      (error) => {
-        setModalInfo({
-          show: true,
-          title: "خطا",
-          message: "پیام ارسال نشد. لطفا دوباره تلاش کنید.",
-          isError: true,
-        });
-      }
-    );
-};
 
 const info = [
   {
@@ -74,7 +43,50 @@ const Contact = () => {
     isError: false,
   });
   const [selectedService, setSelectedService] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const service = params.get("service");
+    setSelectedService(service || "");
+  }, [window.location.search]);
 
+  const sendEmail = (e, setModalInfo, resetForm) => {
+    e.preventDefault();
+    setIsLoading(true);
+    emailjs
+      .sendForm(
+        "service_g04mdgm",
+        "template_6dp3fnr",
+        e.target,
+        "Agg89X9B4Qni1Fyqq"
+      )
+      .then(
+        (result) => {
+          setModalInfo({
+            show: true,
+            title: "موفق!",
+            message: "پیام شما با موفقیت ارسال شد!",
+            isError: false,
+          });
+          resetForm(e.target);
+        },
+        (error) => {
+          setModalInfo({
+            show: true,
+            title: "خطا",
+            message: "پیام ارسال نشد. لطفا دوباره تلاش کنید.",
+            isError: true,
+          });
+        }
+      )
+      .finally(() => {
+        setIsLoading(false);
+      });
+  };
+  const handelServiceChange = (newValue) => {
+    setSelectedService(newValue);
+    console.log(selectedService);
+  };
   const handleCloseModal = () => {
     setModalInfo({ ...modalInfo, show: false });
   };
@@ -159,7 +171,11 @@ const Contact = () => {
                   />
                 </div>
                 {/* select */}
-                <Select name="service" value={selectedService} onValueChange={setSelectedService}>
+                <Select
+                  name="service"
+                  value={selectedService}
+                  onValueChange={handelServiceChange}
+                >
                   <SelectTrigger className="w-full">
                     <SelectValue placeholder="یکی از خدمات را انتخاب کنید" />
                   </SelectTrigger>
@@ -190,8 +206,37 @@ const Contact = () => {
                   placeholder="... پیام خود را اینجا بنویسید"
                 />
                 {/* btn */}
-                <Button type="submit" size="lg" className="max-w-40">
-                  ارسال پیام
+                <Button
+                  type="submit"
+                  size="lg"
+                  className="max-w-40"
+                  disabled={isLoading}
+                >
+                  {isLoading ? (
+                    <div className="flex items-center gap-3">
+                      <svg
+                        className="animate-spin h-5 w-5 mr-1"
+                        viewBox="0 0 24 24"
+                      >
+                        <circle
+                          className="opacity-25"
+                          cx="12"
+                          cy="12"
+                          r="10"
+                          stroke="currentColor"
+                          strokeWidth="4"
+                        />
+                        <path
+                          className="opacity-75"
+                          fill="currentColor"
+                          d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.96 7.96 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                        />
+                      </svg>
+                      در حال ارسال
+                    </div>
+                  ) : (
+                    "ارسال پیام"
+                  )}
                 </Button>
               </form>
             </div>

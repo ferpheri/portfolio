@@ -53,7 +53,15 @@ const Services = () => {
                   {service.num}
                 </div>
                 <Link
-                  href={service.href}
+                  href={{
+                    pathname: service.href,
+                    query: {
+                      service:
+                        service.title === "طراحی وب"
+                          ? "UI/UX"
+                          : service.title,
+                    },
+                  }}
                   className="w-[70px] h-[70px] bg-black dark:bg-white rounded-full group-hover:bg-indigo-700 dark:group-hover:bg-accent transition-all duration-500 flex justify-center items-center hover:-rotate-45"
                 >
                   <BsArrowDownRight className="dark:text-primary text-indigo-200 text-3xl" />
