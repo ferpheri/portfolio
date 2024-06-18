@@ -2,6 +2,7 @@ import React from "react";
 import useLanguage from "./useLanguage";
 
 const Modal = ({ show, onClose, title, message, isError }) => {
+  const lang = useLanguage();
   if (!show) {
     return null;
   }
@@ -10,8 +11,7 @@ const Modal = ({ show, onClose, title, message, isError }) => {
       onClose();
     }
   };
-  const lang = useLanguage();
-  
+
   return (
     <div
       className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50"

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Button } from "./ui/button";
 import Nav from "./Nav";
 import MobileNav from "./MobileNav";
-import useTheme, { useThemeSync } from "./useTheme";
+import useTheme from "./useTheme";
 import { FaSun, FaMoon } from "react-icons/fa";
 import { usePathname } from "next/navigation";
 import useLanguage from "./useLanguage";
@@ -21,7 +21,6 @@ const Header = () => {
   };
 
   const { theme, setTheme } = useTheme();
-  // useThemeSync();
 
   const toggleBtnIcon =
     theme === "dark" ? (
