@@ -83,32 +83,56 @@ const Contact = () => {
               </p>
               {/* input */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <Input type="firstname" placeholder="First name" required />
-                <Input type="lastname" placeholder="Last name" required />
-                <Input type="email" placeholder="Email address" required />
-                <Input type="phone" placeholder="Phone number" required />
+                <Input
+                  type="text"
+                  name="firstname"
+                  placeholder="First name"
+                  required
+                />
+                <Input
+                  type="text"
+                  name="lastname"
+                  placeholder="Last name"
+                  required
+                />
+                <Input
+                  type="email"
+                  name="email"
+                  placeholder="Email address"
+                  required
+                />
+                <Input
+                  type="tel"
+                  name="phone"
+                  placeholder="Phone number"
+                  required
+                />
               </div>
               {/* select */}
-              <Select>
+              <Select name="service">
                 <SelectTrigger className="w-full">
                   <SelectValue placeholder="Select a service" />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectGroup>
                     <SelectLabel>Select a service</SelectLabel>
-                    <SelectItem value="est">Web Development</SelectItem>
-                    <SelectItem value="cst">UI/UX</SelectItem>
-                    <SelectItem value="mst">Robot Code</SelectItem>
+                    <SelectItem value="Web Development">
+                      Web Development
+                    </SelectItem>
+                    <SelectItem value="UI/UX">UI/UX</SelectItem>
+                    <SelectItem value="Robot Code">Robot Code</SelectItem>
                   </SelectGroup>
                 </SelectContent>
               </Select>
               {/* textarea */}
               <Textarea
                 className="h-[200px]"
+                name="message"
                 placeholder="Type your message here."
+                required
               />
               {/* btn */}
-              <Button size="md" className="max-w-40">
+              <Button type="submit" size="md" className="max-w-40">
                 Send message
               </Button>
             </form>
