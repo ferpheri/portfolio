@@ -17,7 +17,7 @@ import { motion } from "framer-motion";
 import emailjs from "emailjs-com";
 import Modal from "@/components/Modal";
 
-const sendEmail = (e, setModalInfo) => {
+const sendEmail = (e, setModalInfo, resetForm) => {
   e.preventDefault();
 
   emailjs
@@ -35,6 +35,7 @@ const sendEmail = (e, setModalInfo) => {
           message: "Message Sent Successfully!",
           isError: false,
         });
+        resetForm(e.target);
       },
       (error) => {
         setModalInfo({
@@ -46,7 +47,6 @@ const sendEmail = (e, setModalInfo) => {
       }
     );
 };
-
 const info = [
   {
     icon: <FaPhoneAlt />,
@@ -72,9 +72,14 @@ const Contact = () => {
     message: "",
     isError: false,
   });
-
+  const [selectedService, setSelectedService] = useState("");
   const handleCloseModal = () => {
     setModalInfo({ ...modalInfo, show: false });
+  };
+
+  const resetForm = (form) => {
+    form.reset();
+    setSelectedService("");
   };
 
   return (
@@ -94,7 +99,7 @@ const Contact = () => {
               <form
                 action=""
                 className="flex flex-col gap-6 p-10 bg-indigo-400 dark:bg-[#27272c] rounded-xl"
-                onSubmit={(e) => sendEmail(e, setModalInfo)}
+                onSubmit={(e) => sendEmail(e, setModalInfo, resetForm)}
               >
                 <h3 className="text-4xl text-indigo-900 dark:text-accent">
                   Let's work together
@@ -133,7 +138,7 @@ const Contact = () => {
                   />
                 </div>
                 {/* select */}
-                <Select name="service">
+                <Select name="service" value={selectedService} onValueChange={setSelectedService}>
                   <SelectTrigger className="w-full">
                     <SelectValue placeholder="Select a service" />
                   </SelectTrigger>

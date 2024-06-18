@@ -17,7 +17,7 @@ import emailjs from "emailjs-com";
 import Modal from "@/components/Modal";
 import { useState } from "react";
 
-const sendEmail = (e, setModalInfo) => {
+const sendEmail = (e, setModalInfo, resetForm) => {
   e.preventDefault();
 
   emailjs
@@ -35,6 +35,7 @@ const sendEmail = (e, setModalInfo) => {
           message: "پیام شما با موفقیت ارسال شد!",
           isError: false,
         });
+        resetForm(e.target);
       },
       (error) => {
         setModalInfo({
@@ -72,9 +73,14 @@ const Contact = () => {
     message: "",
     isError: false,
   });
+  const [selectedService, setSelectedService] = useState("");
 
   const handleCloseModal = () => {
     setModalInfo({ ...modalInfo, show: false });
+  };
+  const resetForm = (form) => {
+    form.reset();
+    setSelectedService("");
   };
   return (
     <>
@@ -111,7 +117,7 @@ const Contact = () => {
               <form
                 action=""
                 className="flex flex-col gap-6 p-10 bg-indigo-400 dark:bg-[#27272c] rounded-xl"
-                onSubmit={(e) => sendEmail(e, setModalInfo)}
+                onSubmit={(e) => sendEmail(e, setModalInfo, resetForm)}
               >
                 <h3 className="text-4xl text-indigo-900 dark:text-accent">
                   شروع همکاری
@@ -153,7 +159,7 @@ const Contact = () => {
                   />
                 </div>
                 {/* select */}
-                <Select name="service">
+                <Select name="service" value={selectedService} onValueChange={setSelectedService}>
                   <SelectTrigger className="w-full">
                     <SelectValue placeholder="یکی از خدمات را انتخاب کنید" />
                   </SelectTrigger>
