@@ -45,7 +45,7 @@ const about = {
     },
     {
       fieldName: "تجربه",
-      feildValue: "+سال ۶",
+      feildValue: "+سال ۳",
     },
     {
       fieldName: "ایمیل",

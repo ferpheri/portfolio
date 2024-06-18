@@ -15,7 +15,7 @@ const formatNumber = (num, lang) => {
 };
 
 const stats = [
-  { num: 6, text: { en: "Years of experience", fa: "سال تجربه" } },
+  { num: 3, text: { en: "Years of experience", fa: "سال تجربه" } },
   { num: 10, text: { en: "Projects completed", fa: "پروژه‌های تکمیل شده" } },
   { num: 7, text: { en: "Technologies mastered", fa: "فناوری‌های مسلط شده" } },
   { num: 500, text: { en: "Code commits", fa: "مشارکت‌های در برنامه‌نویسی" } },

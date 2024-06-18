@@ -14,6 +14,27 @@ import {
 import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
 import { motion } from "framer-motion";
 import useLanguage from "@/components/useLanguage";
+import emailjs from "emailjs-com";
+
+const sendEmail = (e) => {
+  e.preventDefault();
+
+  emailjs
+    .sendForm(
+      "service_g04mdgm",
+      "template_6dp3fnr",
+      e.target,
+      "Agg89X9B4Qni1Fyqq"
+    )
+    .then(
+      (result) => {
+        alert("Message Sent Successfully!");
+      },
+      (error) => {
+        alert("Failed to Send Message, please try again.");
+      }
+    );
+};
 
 const info = [
   {
@@ -34,7 +55,7 @@ const info = [
 ];
 
 const Contact = () => {
-  const lang = useLanguage()
+  const lang = useLanguage();
   return (
     <motion.section
       initial={{ opacity: 0 }}
@@ -51,6 +72,7 @@ const Contact = () => {
             <form
               action=""
               className="flex flex-col gap-6 p-10 bg-indigo-400 dark:bg-[#27272c] rounded-xl"
+              onSubmit={sendEmail}
             >
               <h3 className="text-4xl text-indigo-900 dark:text-accent">
                 Let's work together
@@ -61,10 +83,10 @@ const Contact = () => {
               </p>
               {/* input */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <Input type="firstname" placeholder="First name" />
-                <Input type="lastname" placeholder="Last name" />
-                <Input type="email" placeholder="Email address" />
-                <Input type="phone" placeholder="Phone number" />
+                <Input type="firstname" placeholder="First name" required />
+                <Input type="lastname" placeholder="Last name" required />
+                <Input type="email" placeholder="Email address" required />
+                <Input type="phone" placeholder="Phone number" required />
               </div>
               {/* select */}
               <Select>
