@@ -12,7 +12,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
+import {
+  FaPhoneAlt,
+  FaEnvelope,
+  FaMapMarkerAlt,
+  FaExclamationCircle,
+} from "react-icons/fa";
 import { motion } from "framer-motion";
 import emailjs from "emailjs-com";
 import Modal from "@/components/Modal";
@@ -42,16 +47,54 @@ const Contact = () => {
     message: "",
     isError: false,
   });
+
   const [selectedService, setSelectedService] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const service = params.get("service");
-    setSelectedService(service || "");
-  }, [window.location.search]);
+  const [formError, setFormError] = useState({
+    firstname: "",
+    lastname: "",
+    email: "",
+    phone: "",
+    service: "",
+    message: "",
+  });
+
+  const validateForm = (form) => {
+    const errors = {};
+    if (!form.firstname.value.trim()) {
+      errors.firstname = ".لطفاً نام خود را وارد کنید";
+    }
+    if (!form.lastname.value.trim()) {
+      errors.lastname = ".لطفاً نام خانوادگی خود را وارد کنید";
+    }
+    if (!form.email.value.trim()) {
+      errors.email = ".لطفاً ایمیل خود را وارد کنید";
+    } else if (
+      !/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+        form.email.value
+      )
+    ) {
+      errors.email = ".ایمیل وارد شده معتبر نیست";
+    }
+    if (!form.phone.value.trim()) {
+      errors.phone = ".لطفاً شماره تماس خود را وارد کنید";
+    }
+    if (!selectedService) {
+      errors.service = ".لطفاً یک سرویس را انتخاب کنید";
+    }
+    if (!form.message.value.trim()) {
+      errors.message = ".لطفاً پیام خود را وارد کنید";
+    }
+    return errors;
+  };
 
   const sendEmail = (e, setModalInfo, resetForm) => {
     e.preventDefault();
+    const errors = validateForm(e.target);
+    setFormError(errors);
+    if (Object.keys(errors).length > 0) {
+      return;
+    }
     setIsLoading(true);
     emailjs
       .sendForm(
@@ -83,17 +126,41 @@ const Contact = () => {
         setIsLoading(false);
       });
   };
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      const service = params.get("service");
+      setSelectedService(service || "");
+    }
+  }, [typeof window !== "undefined" && window.location.search]);
+
   const handelServiceChange = (newValue) => {
     setSelectedService(newValue);
-    console.log(selectedService);
+    setFormError((prev) => ({ ...prev, service: "" }));
   };
+
   const handleCloseModal = () => {
     setModalInfo({ ...modalInfo, show: false });
   };
+
   const resetForm = (form) => {
     form.reset();
     setSelectedService("");
+    setFormError({});
   };
+
+  const renderErrorMessage = (message) => (
+    <motion.div
+      initial={{ opacity: 0, x: 20 }}
+      animate={{ opacity: 1, x: 0 }}
+      className="flex items-center gap-2 mt-1 text-sm text-red-600 justify-end"
+    >
+      {message}
+      <FaExclamationCircle className="animate-pulse" />
+    </motion.div>
+  );
+
   return (
     <>
       <motion.section
@@ -145,66 +212,87 @@ const Contact = () => {
                 </p>
                 {/* input */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <Input
-                    type="text"
-                    name="lastname"
-                    className="text-right"
-                    placeholder="نام خانوادگی"
-                  />
-                  <Input
-                    type="text"
-                    name="firstname"
-                    className="text-right"
-                    placeholder="نام"
-                  />
-                  <Input
-                    type="email"
-                    name="email"
-                    className="text-right"
-                    placeholder="آدرس ایمیل"
-                  />
-                  <Input
-                    type="tel"
-                    name="phone"
-                    className="text-right"
-                    placeholder="شماره تماس"
-                  />
+                  <div className="relative flex flex-col">
+                    <Input
+                      type="text"
+                      name="lastname"
+                      className="text-right"
+                      placeholder="نام خانوادگی"
+                    />
+                    {formError.lastname &&
+                      renderErrorMessage(formError.lastname)}
+                  </div>
+                  <div className="relative flex flex-col">
+                    <Input
+                      type="text"
+                      name="firstname"
+                      className="text-right"
+                      placeholder="نام"
+                    />
+                    {formError.firstname &&
+                      renderErrorMessage(formError.firstname)}
+                  </div>
+                  <div className="relative flex flex-col">
+                    <Input
+                      type="text"
+                      name="email"
+                      className="text-right"
+                      placeholder="آدرس ایمیل"
+                    />
+                    {formError.email && renderErrorMessage(formError.email)}
+                  </div>
+                  <div className="relative flex flex-col">
+                    <Input
+                      type="tel"
+                      name="phone"
+                      className="text-right"
+                      placeholder="شماره تماس"
+                    />
+                    {formError.phone && renderErrorMessage(formError.phone)}
+                  </div>
                 </div>
                 {/* select */}
-                <Select
-                  name="service"
-                  value={selectedService}
-                  onValueChange={handelServiceChange}
-                >
-                  <SelectTrigger className="w-full">
-                    <SelectValue placeholder="یکی از خدمات را انتخاب کنید" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectGroup>
-                      <SelectLabel className="text-right">
-                        یکی از خدمات را انتخاب کنید
-                      </SelectLabel>
-                      <SelectItem className="justify-end" value="توسعه وب">
-                        توسعه وب
-                      </SelectItem>
-                      <SelectItem className="justify-end" value="UI/UX">
-                        UI/UX
-                      </SelectItem>
-                      <SelectItem
-                        className="justify-end"
-                        value="برنامه نویسی ربات"
-                      >
-                        برنامه نویسی ربات
-                      </SelectItem>
-                    </SelectGroup>
-                  </SelectContent>
-                </Select>
+                <div className="relative flex flex-col">
+                  <Select
+                    name="service"
+                    value={selectedService}
+                    onValueChange={handelServiceChange}
+                  >
+                    <SelectTrigger className="w-full">
+                      <SelectValue placeholder="یکی از خدمات را انتخاب کنید" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectGroup>
+                        <SelectLabel className="text-right">
+                          یکی از خدمات را انتخاب کنید
+                        </SelectLabel>
+                        <SelectItem className="justify-end" value="توسعه وب">
+                          توسعه وب
+                        </SelectItem>
+                        <SelectItem className="justify-end" value="UI/UX">
+                          UI/UX
+                        </SelectItem>
+                        <SelectItem
+                          className="justify-end"
+                          value="برنامه نویسی ربات"
+                        >
+                          برنامه نویسی ربات
+                        </SelectItem>
+                      </SelectGroup>
+                    </SelectContent>
+                  </Select>
+                  {/* showing error for not selecting a service */}
+                  {formError.service && renderErrorMessage(formError.service)}
+                </div>
                 {/* textarea */}
-                <Textarea
-                  className="h-[200px] text-right"
-                  name="message"
-                  placeholder="... پیام خود را اینجا بنویسید"
-                />
+                <div className="relative flex flex-col">
+                  <Textarea
+                    className="h-[200px] text-right"
+                    name="message"
+                    placeholder="... پیام خود را اینجا بنویسید"
+                  />
+                  {formError.message && renderErrorMessage(formError.message)}
+                </div>
                 {/* btn */}
                 <Button
                   type="submit"

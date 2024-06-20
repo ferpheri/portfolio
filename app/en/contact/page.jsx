@@ -12,7 +12,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
+import {
+  FaPhoneAlt,
+  FaEnvelope,
+  FaMapMarkerAlt,
+  FaExclamationCircle,
+} from "react-icons/fa";
 import { motion } from "framer-motion";
 import emailjs from "emailjs-com";
 import Modal from "@/components/Modal";
@@ -42,10 +47,54 @@ const Contact = () => {
     message: "",
     isError: false,
   });
+
   const [selectedService, setSelectedService] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [formError, setFormError] = useState({
+    firstname: "",
+    lastname: "",
+    email: "",
+    phone: "",
+    service: "",
+    message: "",
+  });
+
+  const validateForm = (form) => {
+    const errors = {};
+    if (!form.firstname.value.trim()) {
+      errors.firstname = "First name is required.";
+    }
+    if (!form.lastname.value.trim()) {
+      errors.lastname = "Last name is required.";
+    }
+    if (!form.email.value.trim()) {
+      errors.email = "Email address is required.";
+    } else if (
+      !/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+        form.email.value
+      )
+    ) {
+      errors.email = "Email address is invalid.";
+    }
+    if (!form.phone.value.trim()) {
+      errors.phone = "Phone number is required.";
+    }
+    if (!selectedService) {
+      errors.service = "Please select a service.";
+    }
+    if (!form.message.value.trim()) {
+      errors.message = "Message is required.";
+    }
+    return errors;
+  };
+
   const sendEmail = (e, setModalInfo, resetForm) => {
     e.preventDefault();
+    const errors = validateForm(e.target);
+    setFormError(errors);
+    if (Object.keys(errors).length > 0) {
+      return;
+    }
     setIsLoading(true);
     emailjs
       .sendForm(
@@ -78,14 +127,16 @@ const Contact = () => {
       });
   };
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const service = params.get("service");
-    setSelectedService(service || "");
-  }, [window.location.search]);
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      const service = params.get("service");
+      setSelectedService(service || "");
+    }
+  }, [typeof window !== "undefined" && window.location.search]);
 
   const handelServiceChange = (newValue) => {
     setSelectedService(newValue);
-    console.log(selectedService);
+    setFormError((prev) => ({ ...prev, service: "" }));
   };
 
   const handleCloseModal = () => {
@@ -95,7 +146,19 @@ const Contact = () => {
   const resetForm = (form) => {
     form.reset();
     setSelectedService("");
+    setFormError({});
   };
+
+  const renderErrorMessage = (message) => (
+    <motion.div
+      initial={{ opacity: 0, x: -20 }}
+      animate={{ opacity: 1, x: 0 }}
+      className="flex items-center gap-2 mt-1 text-sm text-red-600"
+    >
+      <FaExclamationCircle className="animate-pulse" />
+      {message}
+    </motion.div>
+  );
 
   return (
     <>
@@ -127,58 +190,70 @@ const Contact = () => {
                 </p>
                 {/* input */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <Input
-                    type="text"
-                    name="firstname"
-                    placeholder="First name"
-                    required
-                  />
-                  <Input
-                    type="text"
-                    name="lastname"
-                    placeholder="Last name"
-                    required
-                  />
-                  <Input
-                    type="email"
-                    name="email"
-                    placeholder="Email address"
-                    required
-                  />
-                  <Input
-                    type="tel"
-                    name="phone"
-                    placeholder="Phone number"
-                    required
-                  />
+                  <div className="relative flex flex-col">
+                    <Input
+                      type="text"
+                      name="firstname"
+                      placeholder="First name"
+                    />
+                    {formError.firstname &&
+                      renderErrorMessage(formError.firstname)}
+                  </div>
+                  <div className="relative flex flex-col">
+                    <Input
+                      type="text"
+                      name="lastname"
+                      placeholder="Last name"
+                    />
+                    {formError.lastname &&
+                      renderErrorMessage(formError.lastname)}
+                  </div>
+                  <div className="relative flex flex-col">
+                    <Input
+                      type="email"
+                      name="email"
+                      placeholder="Email address"
+                    />
+                    {formError.email && renderErrorMessage(formError.email)}
+                  </div>
+                  <div className="relative flex flex-col">
+                    <Input type="tel" name="phone" placeholder="Phone number" />
+                    {formError.phone && renderErrorMessage(formError.phone)}
+                  </div>
                 </div>
                 {/* select */}
-                <Select
-                  name="service"
-                  value={selectedService}
-                  onValueChange={handelServiceChange}
-                >
-                  <SelectTrigger className="w-full">
-                    <SelectValue placeholder="Select a service" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectGroup>
-                      <SelectLabel>Select a service</SelectLabel>
-                      <SelectItem value="Web Development">
-                        Web Development
-                      </SelectItem>
-                      <SelectItem value="UI/UX">UI/UX</SelectItem>
-                      <SelectItem value="Code Robots">Code Robots</SelectItem>
-                    </SelectGroup>
-                  </SelectContent>
-                </Select>
+                <div className="relative flex flex-col">
+                  <Select
+                    name="service"
+                    value={selectedService}
+                    onValueChange={handelServiceChange}
+                  >
+                    <SelectTrigger className="w-full">
+                      <SelectValue placeholder="Select a service" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectGroup>
+                        <SelectLabel>Select a service</SelectLabel>
+                        <SelectItem value="Web Development">
+                          Web Development
+                        </SelectItem>
+                        <SelectItem value="UI/UX">UI/UX</SelectItem>
+                        <SelectItem value="Code Robots">Code Robots</SelectItem>
+                      </SelectGroup>
+                    </SelectContent>
+                  </Select>
+                  {/*showing error for not selecting a service */}
+                  {formError.service && renderErrorMessage(formError.service)}
+                </div>
                 {/* textarea */}
-                <Textarea
-                  className="h-[200px]"
-                  name="message"
-                  placeholder="Type your message here..."
-                  required
-                />
+                <div className="relative flex flex-col">
+                  <Textarea
+                    className="h-[200px]"
+                    name="message"
+                    placeholder="Type your message here..."
+                  />
+                  {formError.message && renderErrorMessage(formError.message)}
+                </div>
                 {/* btn */}
                 <Button
                   type="submit"
