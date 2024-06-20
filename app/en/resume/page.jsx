@@ -315,7 +315,7 @@ const Resume = () => {
                               },
                             }}
                           >
-                            <p className="capitalize text-black/80 font-semibold">
+                            <p className="capitalize text-white/60 dark:text-black/80 font-semibold">
                               {skill.name}
                             </p>
                           </motion.div>

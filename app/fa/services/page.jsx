@@ -49,26 +49,24 @@ const Services = () => {
             >
               <div className="w-full flex justify-between items-center">
                 {/* top */}
-                <div className="text-5xl font-extrabold dark:dark-text-outline text-outline text-transparent dark:group-hover:dark-text-outline-hover group-hover:text-outline-hover transition-all duration-500">
-                  {service.num}
-                </div>
                 <Link
                   href={{
                     pathname: service.href,
                     query: {
                       service:
-                        service.title === "طراحی وب"
-                          ? "UI/UX"
-                          : service.title,
+                        service.title === "طراحی وب" ? "UI/UX" : service.title,
                     },
                   }}
-                  className="w-[70px] h-[70px] bg-black dark:bg-white rounded-full group-hover:bg-indigo-700 dark:group-hover:bg-accent transition-all duration-500 flex justify-center items-center hover:-rotate-45"
+                  className="w-[60px] h-[60px] bg-black dark:bg-white rounded-full group-hover:bg-indigo-700 dark:group-hover:bg-accent transition-all duration-500 flex justify-center items-center hover:-rotate-45"
                 >
                   <BsArrowDownRight className="dark:text-primary text-indigo-200 text-3xl" />
                 </Link>
+                <div className="text-5xl font-extrabold dark:dark-text-outline text-outline text-transparent dark:group-hover:dark-text-outline-hover group-hover:text-outline-hover transition-all duration-500">
+                  {service.num}
+                </div>
               </div>
               {/* title */}
-              <h2 className="text-[42px] font-bold leading-none text-black dark:text-white group-hover:text-indigo-700 dark:group-hover:text-accent transition-all duration-500">
+              <h2 className="text-[42px] font-bold leading-none text-black dark:text-white group-hover:text-indigo-700 dark:group-hover:text-accent transition-all duration-500 text-right">
                 {service.title}
               </h2>
               {/* description */}

@@ -56,9 +56,14 @@ const Services = () => {
                 <Link
                   href={{
                     pathname: service.href,
-                    query: { service: service.title === "Web Design" ? "UI/UX" : service.title },
+                    query: {
+                      service:
+                        service.title === "Web Design"
+                          ? "UI/UX"
+                          : service.title,
+                    },
                   }}
-                  className="w-[70px] h-[70px] bg-black dark:bg-white rounded-full group-hover:bg-indigo-700 dark:group-hover:bg-accent transition-all duration-500 flex justify-center items-center hover:-rotate-45"
+                  className="w-[60px] h-[60px] bg-black dark:bg-white rounded-full group-hover:bg-indigo-700 dark:group-hover:bg-accent transition-all duration-500 flex justify-center items-center hover:-rotate-45"
                 >
                   <BsArrowDownRight className="dark:text-primary text-indigo-200 text-3xl" />
                 </Link>
