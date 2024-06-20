@@ -4,7 +4,7 @@ import { Button } from "./ui/button";
 import Nav from "./Nav";
 import MobileNav from "./MobileNav";
 import useTheme from "./useTheme";
-import { FaSun, FaMoon } from "react-icons/fa";
+import { FaSun, FaMoon, FaGlobe } from "react-icons/fa";
 import { usePathname } from "next/navigation";
 import useLanguage from "./useLanguage";
 import { useEffect } from "react";
@@ -28,12 +28,17 @@ const Header = () => {
     ) : (
       <FaSun className="animate-rotate text-xl" />
     );
+
   const toggleTheme = () => {
     setTheme(theme === "dark" ? "light" : "dark");
   };
 
   useEffect(() => {
-    if (pathname === "/fa/contact" || pathname === "/contact" || window.innerHeight < 675) {
+    if (
+      pathname === "/fa/contact" ||
+      pathname === "/contact" ||
+      window.innerHeight < 675
+    ) {
       document.body.classList.add("no-overflow");
     } else {
       document.body.classList.remove("no-overflow");
@@ -62,12 +67,22 @@ const Header = () => {
         </Link>
         <div className="flex lg:gap-8 gap-4 items-center justify-center">
           {/* Language Toggle Button */}
-          <button
-            onClick={toggleLanguage}
-            className="p-2 font-primary rounded-full h-[40px] w-[40px] bg-indigo-700 dark:bg-accent hover:bg-indigo-600 dark:hover:bg-accent-hover text-indigo-200 dark:text-primary flex items-center justify-center transition-transform duration-500 dark:font-bold"
-          >
-            {currentLang === "en" ? "Fa" : "En"}
-          </button>
+          <div className="relative group">
+            <button
+              onClick={toggleLanguage}
+              className="p-2 font-primary rounded-full h-[40px] w-[80px] bg-indigo-700 dark:bg-accent hover:bg-indigo-600 dark:hover:bg-accent-hover text-indigo-200 dark:text-primary flex items-center justify-center transition-transform duration-500 dark:font-bold"
+            >
+              <FaGlobe className="text-xl" />
+              <span className="ml-2">
+                {currentLang === "en" ? "Fa" : "En"}
+              </span>
+            </button>
+            <span className="absolute bottom-full mb-2 hidden w-max bg-primary text-white text-xs rounded-xl py-1 px-2 lg:group-hover:block sm:group-hover:hidden">
+              {currentLang === "en"
+                ? "Change language to Persian"
+                : "تغییر زبان به انگلیسی"}
+            </span>
+          </div>
           {/* Theme Toggle Button */}
           <button
             onClick={toggleTheme}
@@ -91,4 +106,5 @@ const Header = () => {
     </header>
   );
 };
+
 export default Header;

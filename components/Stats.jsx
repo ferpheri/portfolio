@@ -18,7 +18,7 @@ const stats = [
   { num: 3, text: { en: "Years of experience", fa: "سال تجربه" } },
   { num: 10, text: { en: "Projects completed", fa: "پروژه‌های تکمیل شده" } },
   { num: 7, text: { en: "Technologies mastered", fa: "فناوری‌های مسلط شده" } },
-  { num: 500, text: { en: "Code commits", fa: "مشارکت‌های در برنامه‌نویسی" } },
+  { num: 100, text: { en: "Code commits", fa: "مشارکت‌های در برنامه‌نویسی" } },
 ];
 
 const Stats = () => {
@@ -27,7 +27,11 @@ const Stats = () => {
   const memoizedStats = useMemo(() => {
     return stats.map((stat, index) => (
       <div
-        className={`flex flex-col lg:flex-row md:flex-row items-center lg:items-center justify-center text-center ${currentLang === "fa" ? "gap-x-2 lg:justify-end" : "gap-0 lg:justify-start"}`}
+        className={`flex flex-col lg:flex-row md:flex-row items-center lg:items-center justify-center text-center ${
+          currentLang === "fa"
+            ? "gap-x-2 lg:justify-end"
+            : "gap-0 lg:justify-start"
+        }`}
         key={index}
         style={{ direction: currentLang === "fa" ? "rtl" : "ltr" }}
       >
@@ -39,7 +43,13 @@ const Stats = () => {
           className="text-4xl lg:text-6xl font-extrabold text-indigo-900 dark:text-accent"
         />
         <p
-          className={`mt-2 lg:mt-0 lg:ml-2 ${stat.text[currentLang].length < 15 ? "max-w-[100px]" : "max-w-[150px]"} ${currentLang === "fa" ? "whitespace-nowrap" : ""} leading-snug text-black dark:text-white/80`}
+          className={`mt-2 lg:mt-0 lg:ml-2 ${
+            stat.text[currentLang].length < 15
+              ? "max-w-[100px]"
+              : "max-w-[150px]"
+          } ${
+            currentLang === "fa" ? "whitespace-nowrap" : ""
+          } leading-snug text-black dark:text-white/80`}
         >
           {stat.text[currentLang]}
         </p>
