@@ -28,6 +28,7 @@ import {
 
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { motion } from "framer-motion";
+import { useState } from "react";
 // about data
 
 const about = {
@@ -181,6 +182,8 @@ const skills = {
 };
 
 const Resume = () => {
+  const [selectedSkill, setSelectedSkill] = useState(null); // State to track the selected skill
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -305,7 +308,11 @@ const Resume = () => {
                 <ScrollArea className="h-[350px] ">
                   <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 lg:gap-[30px]">
                     {skills.skillsList.map((skill, index) => (
-                      <li key={index} className="mb-4">
+                      <li
+                        key={index}
+                        className="mb-4 relative"
+                        onClick={() => setSelectedSkill(index)}
+                      >
                         <TooltipProvider delayDuration={100}>
                           <Tooltip>
                             <TooltipTrigger className="w-full h-[150px] bg-indigo-400 dark:bg-[#232329] rounded-xl justify-center items-center flex group">
@@ -313,11 +320,29 @@ const Resume = () => {
                                 {skill.icon}
                               </div>
                             </TooltipTrigger>
-                            <TooltipContent>
+                            <TooltipContent className="sm:hidden lg:block">
                               <p className="capitalize">{skill.name}</p>
                             </TooltipContent>
                           </Tooltip>
                         </TooltipProvider>
+                        {selectedSkill === index && (
+                          <motion.div
+                            className="lg:hidden absolute bottom-0 w-full bg-indigo-700 dark:bg-accent text-center p1-2 rounded-b-xl"
+                            initial={{ opacity: 0 }}
+                            animate={{
+                              opacity: 1,
+                              transition: {
+                                delay: 0.05,
+                                duration: 0.7,
+                                ease: "easeInOut",
+                              },
+                            }}
+                          >
+                            <p className="capitalize text-black/80 font-semibold">
+                              {skill.name}
+                            </p>
+                          </motion.div>
+                        )}
                       </li>
                     ))}
                   </ul>
