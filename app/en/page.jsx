@@ -4,9 +4,11 @@ import Socials from "@/components/Socials";
 import Stats from "@/components/Stats";
 import { Button } from "@/components/ui/button";
 import useTheme from "@/components/useTheme";
+import useThemeMeta from "@/components/useThemeMeta";
 import { FiDownload } from "react-icons/fi";
 
 const Home = () => {
+  useThemeMeta();
   const { theme } = useTheme();
   return (
     <section className="h-full">

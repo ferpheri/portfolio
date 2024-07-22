@@ -4,11 +4,12 @@ import Socials from "@/components/Socials";
 import Stats from "@/components/Stats";
 import { Button } from "@/components/ui/button";
 import useTheme, { useThemeSync } from "@/components/useTheme";
+import useThemeMeta from "@/components/useThemeMeta";
 import { FiDownload } from "react-icons/fi";
 
 const Home = () => {
   const { theme } = useTheme();
-
+  useThemeMeta();
   return (
     <section className="h-full">
       <div className="container mx-auto h-full mt-12">
