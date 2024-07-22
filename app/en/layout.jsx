@@ -24,12 +24,12 @@ export default function RootLayout({ children }) {
         <link rel="icon" href="/fericon.png" />
         <meta
           name="theme-color"
-          media="(prefers-color-scheme: light)"
+          // media="(prefers-color-scheme: light)"
           content="#312e81"
         />
         <meta
           name="theme-color"
-          media="(prefers-color-scheme: dark)"
+          // media="(prefers-color-scheme: dark)"
           content="#00ff99"
         />
       </head>
